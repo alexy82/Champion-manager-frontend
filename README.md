@@ -1,11 +1,4 @@
-# Order Processing Front End Project
-
-## Environment information
-
-- Develop: dev-ops.teko.vn
-- Test: test-ops.teko.vn
-- Staging: stag-ops.teko.vn
-- Live: ops.teko.vn
+# Championship manager Front End Project
 
 ## Installation
 
