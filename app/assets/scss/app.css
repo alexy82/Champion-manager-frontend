@@ -1,0 +1,52 @@
+.DateInput_input {
+    padding: 6px 11px 4px;
+    font-size:15px;
+    text-align: center;
+}
+.DateRangePickerInput_arrow_svg{
+    height: 18px;
+    width: 18px;
+}
+.DateRangePicker {
+    width: 100%;
+    
+}
+.DateRangePickerInput {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.DateInput{
+    width: 45%
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.errorSelect > div{
+    border-color:red
+}
+.errorSelect > div:hover{
+    border-color:red
+}
+.textDialog{
+    font-size: 16px;
+    color:black
+}
+.errorSelectInput{
+    border-color:red !important
+}
+/* .errorSelectInput::placeholder{
+    color:red
+} */
+.toast-container{
+    margin-top: 70px;
+    margin-right: 14px;
+}

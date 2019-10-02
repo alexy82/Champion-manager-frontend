@@ -1,0 +1,14 @@
+---
+- name: Install apt packages
+  become: yes
+  run_once: true
+  apt:
+    update_cache: yes
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - git
+      - nginx
+      - nodejs
+      - yarn

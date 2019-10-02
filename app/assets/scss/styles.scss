@@ -1,0 +1,9 @@
+$base-color: #c6538c;
+.nodeContent {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: $base-color;
+    display: flex;
+    align-items: center;
+ }

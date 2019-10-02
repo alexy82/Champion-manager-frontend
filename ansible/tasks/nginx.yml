@@ -1,0 +1,41 @@
+---
+- name: Create /etc/nginx/ssl/ directory
+  become: yes
+  run_once: yes
+  file:
+    dest: "/etc/nginx/ssl/"
+    force: yes
+    state: directory
+
+- name: Copy SSL keys and certificates
+  become: yes
+  copy:
+    src:  "ssl/{{item}}"
+    dest: "/etc/nginx/ssl/{{item}}"
+    force: yes
+    mode: 0644
+  with_items:
+  - wildcard.teko.vn.crt
+  - wildcard.teko.vn.key
+  notify:
+  - restart nginx
+
+- name: Config nginx OPS
+  become: yes
+  template:
+    src:  "nginx/ops.teko.vn.conf.j2"
+    dest: "/etc/nginx/sites-available/{{ domain_name }}.conf"
+    force: yes
+  notify:
+  - restart nginx
+
+- name: Create nginx symbolic link
+  become: yes
+  run_once: yes
+  file:
+    src: "/etc/nginx/sites-available/{{ domain_name }}.conf"
+    dest: "/etc/nginx/sites-enabled/{{ domain_name }}.conf"
+    force: yes
+    state: link
+  notify:
+  - restart nginx

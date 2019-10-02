@@ -1,0 +1,392 @@
+
+
+#section-to-print {
+  display: none;
+  font-size: 12px;
+  line-height: 1.2;
+  font-family: Arial, Helvetica, sans-serif;
+  padding:1rem 1rem 0.3rem 1rem;
+  color:black
+}
+@page { 
+  margin: 0; 
+}
+@media print {
+  @page { margin: 0; }
+  html, body, page[size="A5"] {
+    width: 210mm;
+    height: 140mm;
+    orientation: portrait;
+  }
+}
+#order-to-print {
+  display: none;
+  font-size: 12px;
+  line-height: 1.2;
+  font-family: Arial, Helvetica, sans-serif;
+  word-wrap: break-word;
+}
+#pageContainer {
+  page-break-after: always;
+  padding:2rem 1rem 0.3rem 1rem
+}
+
+#tablePrint tr th,#tablePrint tr td{
+  padding: 1px 3px
+}
+#tablePrint {
+  border: 1px solid black;
+  border-collapse: collapse;
+    border-spacing: 0;
+}
+/* * {
+  font-size: 20px;
+  line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+.note-container-refund{
+  padding-top: 5px;
+  background: #ffffff;
+  width: 100%;
+  font-size: 12px !important;
+  color:black;
+  page-break-after: always;
+}
+#pageBreak{
+  page-break-after: always;
+}
+.pageTitle{
+  display:flex;
+  justify-content: flex-end;
+  margin-bottom:12px;
+  font-size:18px;
+  font-weight:bold
+}
+.note-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .note-header-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .note-header-code {
+    align-self: flex-end;
+  }
+
+  .note-header-pv {
+    margin-left: 12px;
+    font-size: 13px
+  }
+}
+
+.cashier-name {
+  float: left;
+  font-size: 12px !important;
+}
+
+.note-name {
+  margin: 0px auto;
+}
+.note-name h3 {
+  font-weight: 700;
+  font-size: 28px !important;
+  margin-left: 400px !important;
+}
+
+.note-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.note-body-information {
+  flex: 1;
+}
+
+.note-body-information:nth-child(1) {
+  flex: 1;
+}
+
+.note-product-table {
+  margin: 0px auto;
+}
+.note-product-table table {
+  width: 100%;
+}
+
+#order-to-print table {
+  margin-top: 6px;
+  font-size: 'inherit';
+  margin-bottom: 6px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#order-to-print table,
+#order-to-print th,
+#order-to-print td {
+  border: 1px solid #b2bec3;
+}
+
+/* .note-product-table table,
+th,
+td {
+  border: 0.5px solid black;
+  border-collapse: collapse;
+}
+
+.note-product-table th {
+  text-align: center;
+}
+
+.note-product-table th:nth-child(1) {
+  width: 30px;
+}
+
+.note-product-table th:nth-child(2) {
+  width: 75px;
+}
+.note-product-table th:nth-child(4),
+th:nth-child(5),
+th:nth-child(8) {
+  width: 60px;
+}
+
+.note-product-table th:nth-child(6),
+th:nth-child(7) {
+  width: 120px;
+  text-align: right;
+} */
+
+.note-body-sign {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+}
+.note-body-sign-item {
+  flex: 1;
+  text-align: center;
+}
+.note-body-sign-item-title {
+  font-weight: bold;
+}
+
+.float-right {
+  float: right;
+}
+
+.hide-right {
+  border-right: none !important;
+}
+
+.hide-left {
+  border-left: none !important;
+}
+
+.cell-right-align {
+  text-align: right;
+  padding-right: 4px;
+}
+.cell-center-align {
+  text-align: center !important;
+}
+
+.note-debt-table {
+  margin: 2px auto;
+  color:black
+
+  /* table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  } */
+}
+#debt-table {
+  width: 100%;
+  border: 1px solid #b2bec3;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#debt-table th {
+  border: 1px solid #b2bec3;
+  border-collapse: collapse;
+  padding: 1px 5px
+}
+#debt-table td {
+  border: 1px solid #b2bec3;
+  border-collapse: collapse;
+  padding: 1px 5px
+}
+
+.note-debt-table table th:nth-child(1) {
+  width: 150px;
+}
+.note-debt-table table th:nth-child(2) {
+  width: 300px;
+}
+.debt-table-refund th:nth-child(1),.debt-table-refund th:nth-child(2){
+  width: 50% !important;
+}
+.no-bottom-border {
+  border-bottom: none !important;
+}
+.no-top-border {
+  border-top: none !important;
+}
+
+.note-header-debt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  * {
+    font-size: 15px !important;
+  }
+
+  .note-header-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .note-header-code {
+    align-self: flex-end;
+  }
+
+  .note-header-pv {
+    margin-left: 0px;
+  }
+}
+
+.note-name-debt {
+  text-align: center;
+}
+
+.note-name-debt .title-note-name-debt {
+  margin-top: 0px;
+  text-align: center;
+  color:black !important;
+  font-weight: bold;
+  margin-bottom: 0px;
+  font-size: 18px !important;
+}
+
+.sheet-name {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.margin-0{
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+}
+.note-deposit-table {
+  margin: 0px auto;
+
+  table {
+    width: 100%;
+  }
+
+  table,
+  th,
+  td {
+    border: 0.5px solid #b2bec3;
+    border-collapse: collapse;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  th:nth-child(1) {
+    width: 30px;
+  }
+
+  th:nth-child(2),
+  th:nth-child(3),
+  th:nth-child(4),
+  th:nth-child(5),
+  th:nth-child(6) {
+    width: 160px;
+  }
+}
+
+@media print {
+  .flex-container,
+  #debt-modal,
+  #debt-payment {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  #section-to-print {
+    display: block;
+    color:black;
+    background-color: white;
+    width: 100%;
+  }
+  #order-to-print {
+    display: block;
+    background-color: white;
+    width: 100%;
+  }
+
+  #no-print {
+    display: none;
+  }
+
+  .note-debt-table {
+    tr {
+      width: 100%;
+    }
+    th {
+      width: 350px;
+    }
+  }
+}
+.right-pattern-note {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.right-note {
+  float: right;
+}
+
+.pc-sheet {
+  margin-top: 0px;
+}
+
+.p-note {
+  text-align: left;
+}
+
+.dot-bottom-border {
+  border-bottom-style: dotted !important;
+}
+
+.dot-top-border {
+  border-top-style: dotted !important;
+}

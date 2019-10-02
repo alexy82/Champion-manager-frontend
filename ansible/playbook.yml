@@ -1,0 +1,24 @@
+---
+- hosts: worker
+  vars:
+    username: "{{ansible_user}}"
+    gitlab_user: "{{ lookup('env', 'CI_DEPLOY_USER') }}" # must gitlab-deploy-token for Gitlab CI
+    gitlab_pass: "{{ lookup('env', 'CI_DEPLOY_PASSWORD') }}"
+
+    app_repo: "https://{{ gitlab_user }}:{{ gitlab_pass }}@git.teko.vn/sg3/pos-frontend.git"
+    app_root: "{{ lookup('env', 'DEPLOY_DIR') }}"
+    app_rev:  "{{ lookup('env', 'CI_COMMIT_REF_NAME')  | default('master', true) }}"
+    app_env:  "{{ lookup('env', 'ENV_MODE') | default('dev', true) }}"
+    APP_ENV:  "{{ app_env | upper }}"
+    domain_name:  "{{ lookup('env', 'DOMAIN_NAME') }}"
+    service_port:  "{{ lookup('env', 'SERVICE_PORT') | default('10040', true) }}"
+
+  tasks:
+  - include_tasks: tasks/apt.yml
+  - include_tasks: tasks/prepare.yml
+  - include_tasks: tasks/build.yml
+  - include_tasks: tasks/nginx.yml
+
+  handlers:
+  - import_tasks: handlers/restart_nginx.yml
+

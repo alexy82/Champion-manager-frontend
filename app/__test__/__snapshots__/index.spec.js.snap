@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation1 FeatureCard-paperContainer-1 MuiPaper-rounded"
+>
+  <div
+    className="MuiGrid-root FeatureCard-cardContainer-2 MuiGrid-container"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+    >
+      <div
+        className="MuiGrid-root FeatureCard-picture-3 MuiGrid-container"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root FeatureCard-title-4 MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        <strong />
+      </p>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <p
+        className="MuiTypography-root FeatureCard-contentBox-5 MuiTypography-body1"
+      />
+    </div>
+  </div>
+</div>
+`;
