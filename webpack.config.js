@@ -13,7 +13,7 @@ module.exports = env => {
     },
     mode: env && env.production ? "production" : "development",
     devServer: {
-      host: "nhan-vien-phong-vu-web-app.phongvu.vn",
+      host: "cm.championship.vn",
       contentBase: BUILD_DIR,
       compress: true,
       hot: true,

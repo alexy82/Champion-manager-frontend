@@ -231,6 +231,7 @@ class AppHeader extends React.Component {
                 </ListItem>
               </Link>
               {this.renderMenuElement("page1", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("page2", user && user.userDetail ? user.userDetail : null)}
             </List>
           </div>
         </SwipeableDrawer>
@@ -285,6 +286,12 @@ const menuMaping = {
     perm: null,
     path: "/page1",
     title: "Trang 1",
+    svgSrc: order
+  },
+  page2: {
+    perm: null,
+    path: "/page2",
+    title: "Nhóm quyền",
     svgSrc: order
   }
 }
@@ -368,7 +375,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -384,14 +391,14 @@ const styles = theme => ({
   },
   margin: {
     backgroundColor: green[600],
-    margin: theme.spacing.unit
+    margin: theme.spacing()
   },
   icon: {
     fontSize: 20
   },
   iconVariant: {
     opacity: 0.9,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing()
   },
   message: {
     display: "flex",

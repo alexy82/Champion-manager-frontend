@@ -111,7 +111,7 @@ const cardMaping = {
       title: (
         <React.Fragment>
           TRANG TEST
-          <br />1
+          <br />
         </React.Fragment>
       ),
       svgSource: order,

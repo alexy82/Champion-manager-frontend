@@ -14,7 +14,8 @@ class OrderChecking extends React.Component {
     let { classes } = this.props
     return (
       <Grid container justify="center">
-        <h2 className={classes.title}>Trang test 1</h2>
+        <h2 className={classes.title}>Trang test </h2>
+        <br></br>
       </Grid>
     )
   }

@@ -53,15 +53,15 @@ const styles = theme => ({
     width: "auto",
     display: "block", // Fix IE 11 issue.
     textAlign: "center",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3)
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`
   },
   button: {
     backgroundColor: "#0d3e6b",

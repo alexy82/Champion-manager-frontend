@@ -114,7 +114,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   buttonProgress: {
     position: "absolute",
@@ -126,11 +126,11 @@ const styles = theme => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit * 3,
+      marginLeft: theme.spacing(3),
       width: "auto"
     }
   }

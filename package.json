@@ -1,5 +1,5 @@
 {
-  "name": "nhan-vien-phong-vu-web-app",
+  "name": "cm",
   "version": "0.1.0",
   "main": "index.js",
   "prettier": {
@@ -36,7 +36,7 @@
     "firebase-tools": "^6.3.1",
     "jest": "^24.9.0",
     "jest-css-modules": "^2.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "material-ui-pickers": "^2.0.1",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",

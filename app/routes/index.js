@@ -23,6 +23,16 @@ const LoadablePage1 = Loadable({
     )
   }
 })
+const LoadablePage2 = Loadable({
+  loader: () => import("../views/page2"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
 const AppRoutes = () => {
   return (
     <Switch>
@@ -39,6 +49,7 @@ const AppRoutes = () => {
         title={"Điều chỉnh hóa đơn"}
       /> */}
       <AppRoute component={LoadablePage1} exact needAuthenticated needStore background path="/page1" _key={"page1"} title={"Trang 1"} />
+      <AppRoute component={LoadablePage2} exact needAuthenticated needStore background path="/page2" _key={"page2"} title={"Quản lý nhóm quyền"} />
     </Switch>
   )
 }

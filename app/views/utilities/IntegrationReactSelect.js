@@ -26,13 +26,13 @@ const styles = theme => ({
     fontSize: "14px"
   },
   chip: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
+    margin: `${theme.spacing(2)}px ${theme.spacing(4)}px`
   },
   chipFocused: {
     backgroundColor: emphasize(theme.palette.type === "light" ? theme.palette.grey[300] : theme.palette.grey[700], 0.08)
   },
   noOptionsMessage: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    padding: `${theme.spacing()}px ${theme.spacing(3)}px`
   },
   singleValue: {
     fontSize: 14
@@ -49,12 +49,12 @@ const styles = theme => ({
   paper: {
     position: "absolute",
     zIndex: 999,
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(),
     left: 0,
     right: 0
   },
   divider: {
-    height: theme.spacing.unit * 2
+    height: theme.spacing(3)
   }
 })
 function NoOptionsMessage(props) {

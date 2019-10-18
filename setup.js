@@ -10,13 +10,6 @@ module.exports = {
     sso: "acc.teko.vn"
   },
   time_presence: 60,
-  firebase_config: {
-    apiKey: "AIzaSyDdOPK1_e5aeu6Cxcc6cU8aojbvYDCzC_s",
-    authDomain: "pos.phongvu.vn",
-    databaseURL: "https://nhan-vien-phong-vu.firebaseio.com",
-    projectId: "nhan-vien-phong-vu",
-    storageBucket: "nhan-vien-phong-vu.appspot.com"
-  },
   protocol: "https",
   googleClientId: "384559672688-caaiimsnghfjep71qnujh2ls0lj66jgl.apps.googleusercontent.com",
   googleClientSecret: "D8UVeLSYREbkERWgnD3yPgVE",
