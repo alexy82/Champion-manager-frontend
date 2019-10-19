@@ -34,7 +34,7 @@ export default function reduce(state = originalInitialState, action) {
       newState.permission = action.data.items.map(ele => {
         return {
           value: String(ele.id),
-          label: ele.desc
+          label: ele.name
         }
       })
       return newState

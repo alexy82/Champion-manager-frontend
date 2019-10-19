@@ -3,10 +3,12 @@ import React from "react"
 import { Icon } from "@material-ui/core"
 const style = {
   paperBox: {
-    padding: "16px 16px 8px",
+    padding: "16px",
+    paddingBottom: "32px",
     borderTop: "5px solid #2f71c454"
   },
   titleBox: {
+    marginTop: 8,
     color: "#5d9cec",
     padding: "0 0 16px 0",
     fontSize: "14px",
@@ -24,6 +26,8 @@ const style = {
   }
 }
 export function withPaper(Wrap, icon, label) {
+  //Create Paper cover component that is defined "Wrap"
+  //Higher Order Component pattern
   return class cls extends React.Component {
     constructor(props) {
       super(props)

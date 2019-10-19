@@ -11,7 +11,6 @@ import AppHeader from "./AppHeader"
 import Page403 from "../403/"
 import Login from "../Login/index"
 import cookie from "react-cookies"
-import * as config from "./../../config"
 // import { havePermission, haveAsiaUser, haveAsia } from "./permission"
 import communes from "../../constants/communes.json"
 import districts from "../../constants/districts.json"
@@ -68,7 +67,6 @@ class AppRoute extends React.Component {
               <div className={classes.toolbar} />
               <C {...rest} {...props} user={user} />
             </main>
-            {config.env !== "production" ? <div className={classes.devEnv}>{config.env}</div> : null}
           </div>
         )}
       />

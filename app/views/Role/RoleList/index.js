@@ -4,11 +4,11 @@ import { withStyles } from "@material-ui/core/styles"
 import { Icon, CircularProgress } from "@material-ui/core"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-import { getAllRoleList, deleteRole } from "../../stores/role/actions"
+import { getAllRoleList, deleteRole } from "./../../../stores/role/actions"
 import RoleTable from "./RoleTable"
-import ConfirmDialog from "../../components/dialog/ConfirmDialog"
-import { havePermission } from "../utilities/permission"
-import { withLoadingPage } from "../Utils/loadingPage"
+import ConfirmDialog from "./../../../components/dialog/ConfirmDialog"
+import { havePermission } from "./../../utilities/permission"
+import { withLoadingPage } from "./../../Utils/loadingPage"
 class RoleList extends React.Component {
   constructor(props) {
     super(props)
@@ -33,6 +33,7 @@ class RoleList extends React.Component {
   }
   componentDidMount = this.props.loadingHelper(this.getList)()
   acceptDelete = this.props.loadingHelper(async () => {
+    this.handleClose()
     await this.props.dispatch(deleteRole(this.state.id))
     await this.getList()
   })
@@ -40,8 +41,7 @@ class RoleList extends React.Component {
     const { classes, role, user, loading } = this.props
     const { confirmDialog } = this.state
     return (
-      <div>
-        <h2 className={classes.title}> Danh sách quyền </h2>
+      <div style={{ marginBottom: 16 }}>
         <RoleTable
           roles={role.data}
           isUpdate={havePermission(user, "update_role")}
@@ -49,8 +49,8 @@ class RoleList extends React.Component {
           confirmDialog={this.confirmDialog}
           rightBtn={
             havePermission(user, "create_role") ? (
-              <Link to="/role-add">
-                <Button variant="contained" color="primary" className={classes.button}>
+              <Link to="/role-detail/add">
+                <Button variant="contained" style={{ backgroundColor: "#ffd014" }} className={classes.button}>
                   Thêm
                   <Icon className={classes.rightIcon}>add</Icon>
                 </Button>
@@ -91,7 +91,7 @@ const style = () => ({
   },
   button: {
     float: "right",
-    backgroundColor: "#10ac84"
+    color: "white"
   },
   overlay: {
     background: "white",

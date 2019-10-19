@@ -1,5 +1,6 @@
 import * as types from "./action-types"
-import * as types_app from "./../app/action-types"
+import { Toast } from "./../../utils/constant"
+import { countDownSuccessPopup } from "./../../helpers/notify"
 import { getAllRole, addRoleRequest, getDetailRoleRequest, editRoleRequest, getPermissionRequest, deleteRoleRequest } from "./../../api/role"
 export const loadingOrder = value => {
   return {
@@ -22,10 +23,9 @@ export const deleteRole = id => {
   return async dispatch => {
     let data = await deleteRoleRequest(id, dispatch)
     if (data.status === 200) {
-      dispatch({
-        type: types_app.TOOGLE_SNACK,
-        status: true,
-        value: "Xóa quyền thành công!"
+      Toast.fire({
+        type: "success",
+        title: "Bạn đã xóa quyền thành công"
       })
     }
   }
@@ -34,28 +34,36 @@ export const addRole = input => {
   return async dispatch => {
     let result = await addRoleRequest(input, dispatch)
     if (result.status === 200) {
-      dispatch({
-        type: types_app.TOOGLE_SNACK,
-        status: true,
-        value: "Thêm quyền thành công!"
-      })
+      countDownSuccessPopup(
+        () => {
+          window.location.href = "/role"
+        },
+        "Bạn đã thêm nhóm quyền  thành công",
+        {
+          title: "Thêm thành công"
+        }
+      )
     }
   }
 }
-export const editRole = () => {
+export const editRole = input => {
   return async (dispatch, getState) => {
     let params = {
-      name: getState().role.detailRole.name,
-      desc: getState().role.detailRole.desc,
-      permissions: getState().role.detailRole.permission
+      name: input.name,
+      desc: input.desc,
+      permissions: input.permission
     }
     let result = await editRoleRequest(getState().role.detailRole.id, params, dispatch)
     if (result.status === 200) {
-      dispatch({
-        type: types_app.TOOGLE_SNACK,
-        status: true,
-        value: "Sửa quyền thành công!"
-      })
+      countDownSuccessPopup(
+        () => {
+          window.location.href = "/role"
+        },
+        "Sửa nhóm quyền thành công",
+        {
+          title: "Sửa thành công"
+        }
+      )
     }
   }
 }

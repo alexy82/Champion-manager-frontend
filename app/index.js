@@ -21,6 +21,7 @@ import "react-dates/lib/css/_datepicker.css"
 import "firebase/auth"
 import "./assets/scss/app.css"
 import "./assets/scss/styles.scss"
+import "react-dual-listbox/lib/react-dual-listbox.css"
 class Root extends React.Component {
   constructor(props) {
     super(props)

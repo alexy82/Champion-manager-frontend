@@ -14,7 +14,27 @@ const styleProgress = {
   marginLeft: -12
 }
 const LoadableRoleList = Loadable({
-  loader: () => import("../views/RoleList"),
+  loader: () => import("../views/Role/RoleList"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadableRoleDetail = Loadable({
+  loader: () => import("../views/Role/RoleDetail"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadableRoleAdd = Loadable({
+  loader: () => import("../views/Role/RoleAdd"),
   loading() {
     return (
       <div>
@@ -38,7 +58,39 @@ const AppRoutes = () => {
         _key={"invoice"}
         title={"Điều chỉnh hóa đơn"}
       /> */}
-      <AppRoute component={LoadableRoleList} exact needAuthenticated needStore background path="/role" _key={"role"} title={"Quản lý nhóm quyền"} />
+      <AppRoute
+        component={LoadableRoleList}
+        permission={"view_role"}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/role"
+        _key={"role"}
+        title={"Quản lý nhóm quyền"}
+      />
+      <AppRoute
+        component={LoadableRoleDetail}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/role/:id"
+        _key={"role"}
+        permission={"view_role"}
+        title={"Quản lý nhóm quyền"}
+      />
+      <AppRoute
+        component={LoadableRoleAdd}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/role-detail/add"
+        _key={"role"}
+        permission={"create_role"}
+        title={"Quản lý nhóm quyền"}
+      />
     </Switch>
   )
 }

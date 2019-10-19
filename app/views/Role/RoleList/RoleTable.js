@@ -4,8 +4,8 @@ import TableBody from "@material-ui/core/TableBody"
 import TableCell from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
 import { Link } from "react-router-dom"
-import { withTable } from "./../Utils/table"
-import { withPaper } from "./../Utils/paper"
+import { withTable } from "./../../Utils/table"
+import { withPaper } from "./../../Utils/paper"
 import moment from "moment"
 class RoleTable extends React.Component {
   constructor(props) {
@@ -35,13 +35,13 @@ class RoleTable extends React.Component {
                   <TableCell>{moment(row.updated_at).format("HH:mm:ss DD-MM-YYYY")}</TableCell>
                   <TableCell align={"right"}>
                     {isUpdate ? (
-                      <Tooltip title="Xem chi tiết quyền" placement="top">
-                        <Link to={{ pathname: "/role-detail/" + row.id }}>
+                      <Link to={{ pathname: "/role/" + row.id }}>
+                        <Tooltip title="Xem chi tiết quyền" placement="top">
                           <IconButton style={{ color: "rgb(98, 159, 218)" }}>
                             <Icon>remove_red_eye</Icon>
                           </IconButton>
-                        </Link>
-                      </Tooltip>
+                        </Tooltip>
+                      </Link>
                     ) : null}
                     {isDelete ? (
                       <Tooltip title="Xóa quyền" placement="top">

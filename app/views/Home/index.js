@@ -8,7 +8,7 @@ import * as typesApp from "./../../stores/app/action-types"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import { Grid, Paper } from "@material-ui/core"
 import FeatureCard from "./FeatureCard"
-import order from "../../assets/img/order.svg"
+import role from "../../assets/img/man.svg"
 import { havePermission } from "./../utilities/permission"
 class Home extends React.Component {
   constructor(props) {
@@ -115,7 +115,7 @@ const cardMaping = {
           NHÓM QUYỀN
         </React.Fragment>
       ),
-      svgSource: order,
+      svgSource: role,
       content: "Quản lý nhóm quyền",
       style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
     }

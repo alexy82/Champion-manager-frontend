@@ -1,124 +1,53 @@
 import request from "./../utils/request"
-import * as types_app from "./../stores/app/action-types"
-export function getAllRole(dispatch) {
+import { handleError } from "./../helpers/notify"
+let handleE = handleError("nhóm quyền")
+export function getAllRole() {
   return request({
     url: "/api/1.0/roles",
     method: "get"
   }).catch(error => {
-    if (error.response.data.error) {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data.error.detail
-      })
-    } else {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data
-      })
-    }
+    handleE(error, "Đã xảy ra lỗi khi tải danh sách nhóm quyền, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }
-export function deleteRoleRequest(id, dispatch) {
+export function deleteRoleRequest(id) {
   return request({
     url: "/api/1.0/roles?role_id=" + id,
     method: "delete"
   }).catch(error => {
-    if (error.response.data.error) {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data.error.detail
-      })
-    } else {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data
-      })
-    }
+    handleE(error, "Đã xảy ra lỗi khi xóa nhóm quyền, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }
-export function addRoleRequest(input, dispatch) {
+export function addRoleRequest(input) {
   return request({
     url: "/api/1.0/roles",
     method: "post",
     data: input
   }).catch(error => {
-    if (error.response.data.error) {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data.error.detail
-      })
-    } else {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data
-      })
-    }
+    handleE(error, "Đã xảy ra lỗi khi thêm nhóm quyền, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }
-export function getDetailRoleRequest(id, dispatch) {
+export function getDetailRoleRequest(id) {
   return request({
     url: "/api/1.0/roles/" + id,
     method: "get"
   }).catch(error => {
-    if (error.response.data.error) {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data.error.detail
-      })
-    } else {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data
-      })
-    }
+    handleE(error, "Đã xảy ra lỗi khi tải chi tiết nhóm quyền, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }
-export function getPermissionRequest(dispatch) {
+export function getPermissionRequest() {
   return request({
     url: "/api/1.0/permission",
     method: "get"
   }).catch(error => {
-    if (error.response.data.error) {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data.error.detail
-      })
-    } else {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data
-      })
-    }
+    handleE(error, "Đã xảy ra lỗi khi tải danh sách quyền, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }
-export function editRoleRequest(id, input, dispatch) {
+export function editRoleRequest(id, input) {
   return request({
     url: "/api/1.0/roles?role_id=" + id,
     method: "put",
     data: input
   }).catch(error => {
-    if (error.response.data.error) {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data.error.detail
-      })
-    } else {
-      dispatch({
-        type: types_app.SET_ERROR_RESPONSE,
-        status: error.response.status,
-        error: error.response.data
-      })
-    }
+    handleE(error, "Đã xảy ra lỗi khi sửa nhóm quyền, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }

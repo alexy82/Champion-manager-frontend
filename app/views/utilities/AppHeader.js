@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
 import DashboardIcon from "@material-ui/icons/Dashboard"
-import order from "../../assets/img/order-full.svg"
+import role from "../../assets/img/man.svg"
 import Svg from "react-inlinesvg"
 import cookie from "react-cookies"
 // other components
@@ -285,7 +285,7 @@ const menuMaping = {
     perm: "view_role",
     path: "/role",
     title: "Quản lý nhóm quyền",
-    svgSrc: order
+    svgSrc: role
   }
 }
 const mapingIcon = {
