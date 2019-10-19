@@ -6,10 +6,17 @@ class DualBox extends React.Component {
     super(props)
   }
   render() {
-    const { options, selected, onChange } = this.props
+    const { options, selected, onChange, disabled } = this.props
     return (
       <React.Fragment>
-        <DualListBox options={options} canFilter filterPlaceholder="Lọc..." selected={selected} onChange={selected => onChange(selected)} />
+        <DualListBox
+          disabled={disabled}
+          options={options}
+          canFilter
+          filterPlaceholder="Lọc..."
+          selected={selected}
+          onChange={selected => onChange(selected)}
+        />
       </React.Fragment>
     )
   }

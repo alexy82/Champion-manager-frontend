@@ -37,7 +37,12 @@ class RoleView extends React.Component {
       <div>
         <BaseInfo isDisable={isDisable} input={input} errors={this.state.errors} handleChangeInput={handleChangeInput} />
         <div style={{ marginTop: 16 }}>
-          <DualListBox options={permissions} selected={input.permission} onChange={selected => handleChangeInput("permission", selected)} />
+          <DualListBox
+            disabled={isDisable}
+            options={permissions}
+            selected={input.permission}
+            onChange={selected => handleChangeInput("permission", selected)}
+          />
         </div>
         <div className={classes.buttonContainer}>
           <Button style={{ marginRight: 10, backgroundColor: "#808080" }} onClick={this.handleBack} variant="contained" className={classes.button}>
