@@ -5,14 +5,9 @@ module.exports = {
   store_version: "1.0.0",
   log_enabled: true,
   hosts: {
-    sso: "acc.teko.vn"
+    championship: "nhlongcs.pythonanywhere.com"
   },
-  firebase_config: {
-    apiKey: "AIzaSyDT6_hb1qx3RFSGZrn66lLID1X0iHcgcWM",
-    authDomain: "test-firebase-7e1fb.firebaseapp.com",
-    databaseURL: "https://test-firebase-7e1fb.firebaseio.com",
-    projectId: "test-firebase-7e1fb",
-    storageBucket: "test-firebase-7e1fb.appspot.com",
-    messagingSenderId: "55460456801"
-  }
+  googleClientId:"748219663978-1tthvflfj3oovt8v5efggedj52ni39oo.apps.googleusercontent.com",
+  googleClientSecret:"R24pakpy56h_PybWHyl80rLI",
+  redirect_uri:"http://cm.championship.vn:8080"
 }
