@@ -13,8 +13,8 @@ const styleProgress = {
   marginTop: -12,
   marginLeft: -12
 }
-const LoadablePage1 = Loadable({
-  loader: () => import("../views/page1"),
+const LoadableRoleList = Loadable({
+  loader: () => import("../views/RoleList"),
   loading() {
     return (
       <div>
@@ -38,7 +38,7 @@ const AppRoutes = () => {
         _key={"invoice"}
         title={"Điều chỉnh hóa đơn"}
       /> */}
-      <AppRoute component={LoadablePage1} exact needAuthenticated needStore background path="/page1" _key={"page1"} title={"Trang 1"} />
+      <AppRoute component={LoadableRoleList} exact needAuthenticated needStore background path="/role" _key={"role"} title={"Quản lý nhóm quyền"} />
     </Switch>
   )
 }

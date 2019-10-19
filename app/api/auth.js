@@ -27,7 +27,57 @@ export function verifySystemRequest() {
         updated_at: "2019-08-30T09:27:39",
         last_login: null,
         roles: [],
-        permissions: [{ id: 5, key: "view_invoice_detail", name: "Xem chi tiết hóa đơn", desc: "View Invoice Detail" }],
+        permissions: [
+          {
+            desc: "",
+            id: 1,
+            key: "view_user",
+            module: "user",
+            name: "Quyền xem thông tin người dùng"
+          },
+          {
+            desc: "",
+            id: 2,
+            key: "delete_user",
+            module: "user",
+            name: "Quyền xóa người dùng"
+          },
+          {
+            desc: "",
+            id: 3,
+            key: "update_user",
+            module: "user",
+            name: "Quyền sửa người dùng"
+          },
+          {
+            desc: "",
+            id: 4,
+            key: "view_role",
+            module: "role",
+            name: "Quyền xem nhóm quyền"
+          },
+          {
+            desc: "",
+            id: 5,
+            key: "delete_role",
+            module: "role",
+            name: "Quyền xóa nhóm quyền"
+          },
+          {
+            desc: "",
+            id: 6,
+            key: "update_role",
+            module: "role",
+            name: "Quyền sửa nhóm quyền"
+          },
+          {
+            desc: "",
+            id: 7,
+            key: "create_role",
+            module: "role",
+            name: "Quyền thêm nhóm quyền"
+          }
+        ],
         picture: "https://lh3.googleusercontent.com/a-/AAuE7mBu3MhBCe_c_kj2b_XevSl4vsUBPU6p5TiWzgG-"
       }
     }

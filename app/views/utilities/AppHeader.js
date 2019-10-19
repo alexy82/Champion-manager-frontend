@@ -230,7 +230,7 @@ class AppHeader extends React.Component {
                   <ListItemText primary={"Trang chủ"} />
                 </ListItem>
               </Link>
-              {this.renderMenuElement("page1", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("role", user && user.userDetail ? user.userDetail : null)}
             </List>
           </div>
         </SwipeableDrawer>
@@ -281,10 +281,10 @@ class AppHeader extends React.Component {
   }
 }
 const menuMaping = {
-  page1: {
-    perm: null,
-    path: "/page1",
-    title: "Trang 1",
+  role: {
+    perm: "view_role",
+    path: "/role",
+    title: "Quản lý nhóm quyền",
     svgSrc: order
   }
 }
