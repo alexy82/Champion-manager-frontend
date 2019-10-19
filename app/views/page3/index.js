@@ -1,11 +1,8 @@
-import * as React from "react"
+import React from "react"
 import { connect } from "react-redux"
-import { Paper } from "@material-ui/core"
 import withStyles from "@material-ui/core/styles/withStyles"
-import * as typesApp from "./../../stores/app/action-types"
-import DataTableShow from "../../components/datalist/DataTableShow"
-import AddButton from "../../components/AddButton"
-class Roles extends React.Component {
+import * as typesApp from "../../stores/app/action-types"
+class AddData extends React.Component {
   componentDidMount() {
     this.props.dispatch({
       type: typesApp.TOOGLE_DRAWER_APP,
@@ -13,14 +10,10 @@ class Roles extends React.Component {
     })
   }
   render() {
-    let { classes } = this.props
+    console.log("999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
     return (
       <div>
-        <h2 className={classes.title}>Danh Sách Quyền</h2>
-        <AddButton />
-        <Paper className={classes.paperBox}>
-          <DataTableShow />
-        </Paper>
+        <p>t</p>
       </div>
     )
   }
@@ -51,4 +44,4 @@ const style = () => ({
     justifyContent: "center"
   }
 })
-export default connect()(withStyles(style)(Roles))
+export default connect()(withStyles(style)(AddData))

@@ -2,7 +2,7 @@ import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody } from "@material-ui/core"
 import withStyles from "@material-ui/core/styles/withStyles"
 import { connect } from "react-redux"
-class MaterialTableDemo extends React.Component {
+class DataTableShow extends React.Component {
   state = {
     columns: [],
     data: []
@@ -70,4 +70,4 @@ const style = () => ({
     textTransform: "uppercase"
   }
 })
-export default connect(mapStateToProps)(withStyles(style)(MaterialTableDemo))
+export default connect(mapStateToProps)(withStyles(style)(DataTableShow))
