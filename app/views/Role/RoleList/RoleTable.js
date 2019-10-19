@@ -31,8 +31,16 @@ class RoleTable extends React.Component {
                   <TableCell>{++index}</TableCell>
                   <TableCell>{row.name}</TableCell>
                   <TableCell>{row.desc}</TableCell>
-                  <TableCell>{moment(row.created_at).format("HH:mm:ss DD-MM-YYYY")}</TableCell>
-                  <TableCell>{moment(row.updated_at).format("HH:mm:ss DD-MM-YYYY")}</TableCell>
+                  <TableCell>
+                    {moment(row.created_at)
+                      .add(7, "hours")
+                      .format("HH:mm:ss DD-MM-YYYY")}
+                  </TableCell>
+                  <TableCell>
+                    {moment(row.updated_at)
+                      .add(7, "hours")
+                      .format("HH:mm:ss DD-MM-YYYY")}
+                  </TableCell>
                   <TableCell align={"right"}>
                     {isUpdate ? (
                       <Link to={{ pathname: "/role/" + row.id }}>

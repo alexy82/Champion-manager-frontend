@@ -68,6 +68,9 @@ const style = () => ({
     borderRadius: 4,
     width: "100%",
     fontSize: 15,
+    "&:focus": {
+      border: "2px solid  #1876d2"
+    },
     "&:disabled": {
       backgroundColor: "hsl(0,0%,95%)",
       borderColor: "hsl(0,0%,90%)"
