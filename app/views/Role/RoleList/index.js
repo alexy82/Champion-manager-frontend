@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core"
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
-import { Icon, CircularProgress } from "@material-ui/core"
+import { Icon } from "@material-ui/core"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { getAllRoleList, deleteRole } from "./../../../stores/role/actions"
@@ -38,7 +38,7 @@ class RoleList extends React.Component {
     await this.getList()
   })
   render() {
-    const { classes, role, user, loading } = this.props
+    const { classes, role, user } = this.props
     const { confirmDialog } = this.state
     return (
       <div style={{ marginBottom: 16 }}>
@@ -65,11 +65,6 @@ class RoleList extends React.Component {
           onAccept={this.acceptDelete}
           onClose={this.handleClose}
         />
-        {loading ? (
-          <div className={classes.overlay}>
-            <CircularProgress size={30} className={classes.progress} />
-          </div>
-        ) : null}
       </div>
     )
   }

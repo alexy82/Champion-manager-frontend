@@ -43,6 +43,26 @@ const LoadableRoleAdd = Loadable({
     )
   }
 })
+const LoadableUserAdd = Loadable({
+  loader: () => import("../views/User/UserAdd"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadableUserList = Loadable({
+  loader: () => import("../views/User/UserList"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
 const AppRoutes = () => {
   return (
     <Switch>
@@ -90,6 +110,28 @@ const AppRoutes = () => {
         _key={"role"}
         permission={"create_role"}
         title={"Quản lý nhóm quyền"}
+      />
+      <AppRoute
+        component={LoadableUserList}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/user"
+        _key={"user"}
+        permission={"view_role"}
+        title={"Quản lý người dùng"}
+      />
+      <AppRoute
+        component={LoadableUserAdd}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/user/add"
+        _key={"user"}
+        permission={"create_user"}
+        title={"Quản lý người dùng"}
       />
     </Switch>
   )

@@ -76,6 +76,13 @@ export function verifySystemRequest() {
             key: "create_role",
             module: "role",
             name: "Quyền thêm nhóm quyền"
+          },
+          {
+            desc: "",
+            id: 7,
+            key: "create_user",
+            module: "user",
+            name: "Quyền thêm người dùng"
           }
         ],
         picture: "https://lh3.googleusercontent.com/a-/AAuE7mBu3MhBCe_c_kj2b_XevSl4vsUBPU6p5TiWzgG-"

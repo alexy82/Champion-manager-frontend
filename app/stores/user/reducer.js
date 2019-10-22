@@ -56,6 +56,11 @@ export default function reduce(state = originalInitialState, action) {
         newState.filter.totalCount = 0
         return newState
       }
+    case types.SET_LIST_USER:
+      return {
+        ...newState,
+        data: action.data.items
+      }
     case types.SET_LOADING_USER:
       return {
         ...newState,

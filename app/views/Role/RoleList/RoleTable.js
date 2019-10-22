@@ -10,14 +10,6 @@ import moment from "moment"
 class RoleTable extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      id: "",
-      loading: false,
-      groupList: {},
-      openAddDialog: false,
-      expanded: true,
-      confirmDialog: false
-    }
   }
   render() {
     const { roles, isUpdate, isDelete, confirmDialog } = this.props

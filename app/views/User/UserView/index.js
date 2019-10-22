@@ -1,10 +1,11 @@
 import { Button } from "@material-ui/core"
 import React from "react"
+import BaseInfo from "./BaseInfo"
 import { withStyles } from "@material-ui/core/styles"
 import { Icon, CircularProgress } from "@material-ui/core"
-import BaseInfo from "./BaseInfo"
-import DualListBox from "./DualBoxSelect"
-class RoleView extends React.Component {
+import SetGroup from "./SetGroup"
+import SetRole from "./SetRole"
+class UserView extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,14 +14,14 @@ class RoleView extends React.Component {
     }
   }
   handleBack = () => {
-    this.props.history.push("/role")
+    this.props.history.push("/user")
   }
   handleChangeError = (type, value) => {
     this.setState({ errors: { ...this.state.errors, [type]: { msg: value } } })
   }
   handleSave = async () => {
     if (!this.props.input.name) {
-      this.handleChangeError("name", "Tên quyền không được để trống")
+      this.handleChangeError("name", "Tên người dùng không được để trống")
       return
     } else {
       this.handleChangeError("name", "")
@@ -37,7 +38,13 @@ class RoleView extends React.Component {
       <div>
         <BaseInfo isDisable={isDisable} input={input} errors={this.state.errors} handleChangeInput={handleChangeInput} />
         <div style={{ marginTop: 16 }}>
-          <DualListBox
+          <SetGroup
+            disabled={isDisable}
+            options={permissions}
+            selected={input.permission}
+            onChange={selected => handleChangeInput("permission", selected)}
+          />
+          <SetRole
             disabled={isDisable}
             options={permissions}
             selected={input.permission}
@@ -92,4 +99,4 @@ const style = theme => ({
     justifyContent: "center"
   }
 })
-export default withStyles(style)(RoleView)
+export default withStyles(style)(UserView)

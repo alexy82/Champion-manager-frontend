@@ -1,7 +1,9 @@
 // @flow
 import * as types from "./action-types"
 import { searchStaff } from "./../../api/auth"
+import { countDownSuccessPopup } from "./../../helpers/notify"
 import { verifyGoogleTokenRequest, authTokenRequest, verifySystemRequest } from "./../../api/auth"
+import { getAllUser, addUserRequest } from "./../../api/user"
 import cookie from "react-cookies"
 export const searchStaffSSO = input => {
   // eslint-disable-next-line no-async-promise-executor
@@ -99,5 +101,32 @@ export const changePageCurrent = page => {
       type: types.SET_CURRENT_PAGE,
       page
     })
+  }
+}
+export const getAllUserList = () => {
+  return async dispatch => {
+    let data = await getAllUser(dispatch)
+    if (data.status === 200) {
+      dispatch({
+        type: types.SET_LIST_USER,
+        data: data.data.data
+      })
+    }
+  }
+}
+export const addUser = input => {
+  return async dispatch => {
+    let result = await addUserRequest(input, dispatch)
+    if (result.status === 200) {
+      countDownSuccessPopup(
+        () => {
+          window.location.href = "/user"
+        },
+        "Bạn đã thêm người dùng thành công",
+        {
+          title: "Thêm thành công"
+        }
+      )
+    }
   }
 }

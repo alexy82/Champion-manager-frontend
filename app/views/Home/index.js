@@ -50,6 +50,7 @@ class Home extends React.Component {
         <Paper className={classes.container}>
           <Grid container spacing={8} className={classes.containerBlock}>
             {this.renderFeatureCard("role", user && user.userDetail ? user.userDetail : null)}
+            {this.renderFeatureCard("user", user && user.userDetail ? user.userDetail : null)}
           </Grid>
         </Paper>
       </MuiThemeProvider>
@@ -117,6 +118,22 @@ const cardMaping = {
       ),
       svgSource: role,
       content: "Quản lý nhóm quyền",
+      style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
+    }
+  },
+  user: {
+    perm: "view_user",
+    path: "/user",
+    props: {
+      title: (
+        <React.Fragment>
+          QUẢN LÝ
+          <br />
+          NGƯỜI DÙNG
+        </React.Fragment>
+      ),
+      svgSource: role,
+      content: "Quản lý người dùng",
       style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
     }
   }

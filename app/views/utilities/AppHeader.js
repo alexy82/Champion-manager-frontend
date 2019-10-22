@@ -14,6 +14,7 @@ import IconButton from "@material-ui/core/IconButton"
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
 import DashboardIcon from "@material-ui/icons/Dashboard"
 import role from "../../assets/img/man.svg"
+import user from "../../assets/img/man.svg"
 import Svg from "react-inlinesvg"
 import cookie from "react-cookies"
 // other components
@@ -231,6 +232,7 @@ class AppHeader extends React.Component {
                 </ListItem>
               </Link>
               {this.renderMenuElement("role", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("user", user && user.userDetail ? user.userDetail : null)}
             </List>
           </div>
         </SwipeableDrawer>
@@ -286,6 +288,12 @@ const menuMaping = {
     path: "/role",
     title: "Quản lý nhóm quyền",
     svgSrc: role
+  },
+  user: {
+    perm: "view_user",
+    path: "/user",
+    title: "Quản lý người dùng",
+    svgSrc: user
   }
 }
 const mapingIcon = {
