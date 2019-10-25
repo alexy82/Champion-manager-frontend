@@ -3,7 +3,7 @@ import * as types from "./action-types"
 import { searchStaff } from "./../../api/auth"
 import { countDownSuccessPopup } from "./../../helpers/notify"
 import { verifyGoogleTokenRequest, authTokenRequest, verifySystemRequest } from "./../../api/auth"
-import { getAllUser, addUserRequest } from "./../../api/user"
+import { getAllUser, addUserRequest, getUserDetail, editUserRequest } from "./../../api/user"
 import cookie from "react-cookies"
 export const searchStaffSSO = input => {
   // eslint-disable-next-line no-async-promise-executor
@@ -68,25 +68,25 @@ export const authToken = (code, grantType = "authorization_code", refresh_token 
     }
   }
 }
-// export const userDetail = id => {
-//   return async dispatch => {
-//     let user = await getDetail(id, dispatch)
-//     dispatch({
-//       type: types.SET_LOADING_USER_EDIT,
-//       status: true
-//     })
-//     if (user.status === 200) {
-//       dispatch({
-//         type: types.SET_USER_DETAIL,
-//         data: user.data.data
-//       })
-//       dispatch({
-//         type: types.SET_LOADING_USER_EDIT,
-//         status: false
-//       })
-//     }
-//   }
-// }
+export const userDetail = id => {
+  return async dispatch => {
+    let user = await getUserDetail(id, dispatch)
+    dispatch({
+      type: types.SET_LOADING_USER_EDIT,
+      status: true
+    })
+    if (user.status === 200) {
+      dispatch({
+        type: types.SET_USER_DETAIL,
+        data: user.data.data
+      })
+      dispatch({
+        type: types.SET_LOADING_USER_EDIT,
+        status: false
+      })
+    }
+  }
+}
 export const changePageSize = pageSize => {
   return async dispatch => {
     dispatch({
@@ -125,6 +125,27 @@ export const addUser = input => {
         "Bạn đã thêm người dùng thành công",
         {
           title: "Thêm thành công"
+        }
+      )
+    }
+  }
+}
+export const editUser = input => {
+  return async (dispatch, getState) => {
+    let params = {
+      name: input.name,
+      desc: input.desc,
+      permissions: input.permission
+    }
+    let result = await editUserRequest(getState().user.detailUser.id, params, dispatch)
+    if (result.status === 200) {
+      countDownSuccessPopup(
+        () => {
+          window.location.href = "/user"
+        },
+        "Sửa nhóm quyền thành công",
+        {
+          title: "Sửa thành công"
         }
       )
     }

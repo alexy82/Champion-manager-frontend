@@ -30,6 +30,8 @@ class UserList extends React.Component {
     return (
       <UserTable
         users={userList}
+        isUpdate={havePermission(user, "update_role")}
+        isDelete={havePermission(user, "delete_role")}
         confirmDialog={this.confirmDialog}
         rightBtn={
           havePermission(user, "create_user") ? (

@@ -1,24 +1,28 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getAllPermission } from "./../../../stores/role/actions"
-import { getAllRoleList } from "./../../../stores/role/actions"
-import { addUser } from "./../../../stores/user/actions"
-import { withLoadingPage } from "./../../Utils/loadingPage"
+import _, { cloneDeep } from "lodash"
+import { userDetail, editUser } from "../../../stores/user/actions"
+import { getAllPermission, getAllRoleList } from "../../../stores/role/actions"
 import UserView from "./../UserView"
-class UserAdd extends React.Component {
+import { withLoadingPage } from "../../Utils/loadingPage"
+import { havePermission } from "../../utilities/permission"
+class UserDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       id: "",
       input: {
-        name: "",
+        fullname: "",
         email: "",
-        phone: "",
+        mobile: "",
         role: [],
         permission: []
       },
       isEmptyInput: true
     }
+  }
+  getDetail = async () => {
+    await this.props.dispatch(userDetail(this.props.match.params.id))
   }
   getPermission = async () => {
     this.props.dispatch(getAllPermission())
@@ -29,10 +33,16 @@ class UserAdd extends React.Component {
   handleChangeInput = (type, value) => {
     this.setState({ input: { ...this.state.input, [type]: value } })
   }
+  componentDidUpdate(prevProps) {
+    if ((this.props.user.id && this.state.isEmptyInput) || !_.isEqual(prevProps.user, this.props.user)) {
+      this.setState({ input: cloneDeep(this.props.user), isEmptyInput: false })
+    }
+  }
   handleSave = this.props.loadingHelper(async () => {
-    await this.props.dispatch(addUser(this.state.input))
+    await this.props.dispatch(editUser(this.state.input))
   })
   componentDidMount = this.props.loadingHelper(async () => {
+    await this.getDetail()
     await this.getPermission()
     await this.getRoles()
   })
@@ -40,9 +50,11 @@ class UserAdd extends React.Component {
     return (
       <UserView
         input={this.state.input}
+        errors={this.state.errors}
         loadingButton={this.state.loadingButton}
         handleSave={this.handleSave}
         handleChangeInput={this.handleChangeInput}
+        isDisable={!havePermission(this.props.user, "update_user")}
         {...this.props}
       />
     )
@@ -55,4 +67,4 @@ const mapStateToProps = state => {
     user: state.user.userDetail
   }
 }
-export default connect(mapStateToProps)(withLoadingPage(UserAdd))
+export default connect(mapStateToProps)(withLoadingPage(UserDetail))

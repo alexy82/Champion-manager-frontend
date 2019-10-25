@@ -5,6 +5,9 @@ import { withStyles } from "@material-ui/core/styles"
 import { Icon, CircularProgress } from "@material-ui/core"
 import SetGroup from "./SetGroup"
 import SetRole from "./SetRole"
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index
+}
 class UserView extends React.Component {
   constructor(props) {
     super(props)
@@ -31,8 +34,33 @@ class UserView extends React.Component {
       this.setState({ loadingButton: false })
     })
   }
+  handleChangeRole = selected => {
+    let isRemove = selected.length < this.props.input.role.length
+    let permission = this.props.input.permission
+    let roleMixin = selected.concat(this.props.input.role)
+    roleMixin = roleMixin.filter(onlyUnique)
+    roleMixin.map(item => {
+      let role = this.props.roles.find(element => {
+        return element.id == item
+      })
+      console.log(role)
+      role.permissions.map(perm => {
+        if (isRemove) {
+          var index = permission.indexOf(perm)
+          permission.splice(index, 1)
+        } else {
+          permission.push("" + perm.id)
+        }
+      })
+    })
+    permission = permission.filter(onlyUnique)
+    console.log(permission)
+    this.props.handleChangeInput("permission", permission)
+    this.props.handleChangeInput("role", selected)
+  }
   render() {
-    const { classes, permissions, input, handleChangeInput, isDisable } = this.props
+    const { classes, permissions, roles, input, handleChangeInput, isDisable } = this.props
+    console.log(input)
     const { loadingButton } = this.state
     return (
       <div>
@@ -40,9 +68,11 @@ class UserView extends React.Component {
         <div style={{ marginTop: 16 }}>
           <SetGroup
             disabled={isDisable}
-            options={permissions}
-            selected={input.permission}
-            onChange={selected => handleChangeInput("permission", selected)}
+            options={roles}
+            selected={input.role}
+            onChange={selected => {
+              this.handleChangeRole(selected)
+            }}
           />
           <SetRole
             disabled={isDisable}

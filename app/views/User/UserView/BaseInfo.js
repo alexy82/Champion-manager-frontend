@@ -21,8 +21,8 @@ class RoleList extends React.Component {
                     disabled={isDisable}
                     placeholder="Email"
                     className={`${classes.inputDefaut} ${errors.name && errors.name.msg && "errorSelectInput"}`}
-                    onChange={e => handleChangeInput("name", e.target.value)}
-                    value={input.name ? input.name : ""}
+                    onChange={e => handleChangeInput("email", e.target.value)}
+                    value={input.email ? input.email : ""}
                   />
                   {errors.name && errors.name.msg && <span className={classes.spanError}>{errors.name.msg}</span>}
                 </React.Fragment>
@@ -39,7 +39,7 @@ class RoleList extends React.Component {
                     placeholder="Họ và Tên"
                     className={`${classes.inputDefaut}`}
                     onChange={e => handleChangeInput("desc", e.target.value)}
-                    value={input.desc ? input.desc : ""}
+                    value={input.fullname ? input.fullname : ""}
                   />
                 </React.Fragment>
               }
@@ -54,13 +54,34 @@ class RoleList extends React.Component {
                     disabled={isDisable}
                     placeholder="SĐT"
                     className={`${classes.inputDefaut} ${errors.name && errors.name.msg && "errorSelectInput"}`}
-                    onChange={e => handleChangeInput("name", e.target.value)}
-                    value={input.name ? input.name : ""}
+                    onChange={e => handleChangeInput("mobile", e.target.value)}
+                    value={input.mobile ? input.mobile : ""}
                   />
                   {errors.name && errors.name.msg && <span className={classes.spanError}>{errors.name.msg}</span>}
                 </React.Fragment>
               }
             />
+          </Grid>
+          <Grid className={classes.relative} flex item container xs={6}>
+            <LabelControlVertical
+              label={"Tài khoản"}
+              control={
+                <React.Fragment>
+                  <input
+                    disabled={isDisable}
+                    placeholder="Tài khoản"
+                    className={`${classes.inputDefaut} ${errors.name && errors.name.msg && "errorSelectInput"}`}
+                    onChange={e => handleChangeInput("username", e.target.value)}
+                    value={input.username ? input.username : ""}
+                  />
+                  {errors.name && errors.name.msg && <span className={classes.spanError}>{errors.name.msg}</span>}
+                </React.Fragment>
+              }
+            />
+          </Grid>
+          <Grid className={classes.relative} flex item container xs={12}>
+            <LabelControlVertical xs={12} label="Ngày tạo:  " control={input.created_at} />
+            <LabelControlVertical xs={12} label="Đăng nhập lần cuối:  " control={input.last_login} />
           </Grid>
         </Grid>
       </React.Fragment>

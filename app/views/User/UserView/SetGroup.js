@@ -11,11 +11,20 @@ class SetGroup extends React.Component {
   }
   render() {
     const { options, selected, onChange, disabled } = this.props
+    const optionSettings = []
+    options.map(option =>
+      optionSettings.push({
+        value: option.id,
+        label: option.name,
+        permission: option.permissions
+      })
+    )
+    console.log(optionSettings)
     return (
       <React.Fragment>
         <DualListBox
           disabled={disabled}
-          options={options}
+          options={optionSettings}
           canFilter
           filterPlaceholder="Lọc..."
           selected={selected}

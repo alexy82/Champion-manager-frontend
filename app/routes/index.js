@@ -63,6 +63,16 @@ const LoadableUserList = Loadable({
     )
   }
 })
+const LoadableUserDetail = Loadable({
+  loader: () => import("../views/User/UserDetail"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
 const AppRoutes = () => {
   return (
     <Switch>
@@ -131,6 +141,17 @@ const AppRoutes = () => {
         path="/user/add"
         _key={"user"}
         permission={"create_user"}
+        title={"Quản lý người dùng"}
+      />
+      <AppRoute
+        component={LoadableUserDetail}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/user/:id"
+        _key={"user"}
+        permission={"view_user"}
         title={"Quản lý người dùng"}
       />
     </Switch>
