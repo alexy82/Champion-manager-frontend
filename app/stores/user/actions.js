@@ -1,9 +1,10 @@
 // @flow
 import * as types from "./action-types"
 import { searchStaff } from "./../../api/auth"
+import { Toast } from "./../../utils/constant"
 import { countDownSuccessPopup } from "./../../helpers/notify"
 import { verifyGoogleTokenRequest, authTokenRequest, verifySystemRequest } from "./../../api/auth"
-import { getAllUser, addUserRequest, getUserDetail, editUserRequest } from "./../../api/user"
+import { getAllUser, addUserRequest, getUserDetail, editUserRequest, deleteUserRequest } from "./../../api/user"
 import cookie from "react-cookies"
 export const searchStaffSSO = input => {
   // eslint-disable-next-line no-async-promise-executor
@@ -148,6 +149,17 @@ export const editUser = input => {
           title: "Sửa thành công"
         }
       )
+    }
+  }
+}
+export const deleteUser = id => {
+  return async dispatch => {
+    let data = await deleteUserRequest(id, dispatch)
+    if (data.status === 200) {
+      Toast.fire({
+        type: "success",
+        title: "Bạn đã xóa người dùng thành công"
+      })
     }
   }
 }

@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles"
 import { Icon, CircularProgress } from "@material-ui/core"
 import SetGroup from "./SetGroup"
 import SetRole from "./SetRole"
+import RoleInfo from "./RoleInfo"
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index
 }
@@ -23,11 +24,18 @@ class UserView extends React.Component {
     this.setState({ errors: { ...this.state.errors, [type]: { msg: value } } })
   }
   handleSave = async () => {
-    if (!this.props.input.name) {
-      this.handleChangeError("name", "Tên người dùng không được để trống")
+    if (!this.props.input.email) {
+      this.handleChangeError("email", "Email không được để trống")
       return
-    } else {
-      this.handleChangeError("name", "")
+    } else if (!this.props.input.fullname) {
+      this.handleChangeError("fullname", "Tên người dùng không được để trống")
+      return
+    } else if (!this.props.input.mobile) {
+      this.handleChangeError("phone", "Số điện thoại không được để trống")
+      return
+    } else if (!this.props.input.username) {
+      this.handleChangeError("username", "Tên người dùng không được để trống")
+      return
     }
     this.setState({ loadingButton: true }, async () => {
       await this.props.handleSave()
@@ -59,12 +67,16 @@ class UserView extends React.Component {
     this.props.handleChangeInput("role", selected)
   }
   render() {
-    const { classes, permissions, roles, input, handleChangeInput, isDisable } = this.props
-    console.log(input)
+    const { classes, permissions, user, roles, input, handleChangeInput, isDisable } = this.props
+    console.log(888888888888888888888888888)
+    console.log(user)
     const { loadingButton } = this.state
     return (
       <div>
-        <BaseInfo isDisable={isDisable} input={input} errors={this.state.errors} handleChangeInput={handleChangeInput} />
+        <BaseInfo roles={roles} isDisable={isDisable} input={input} errors={this.state.errors} handleChangeInput={handleChangeInput} />
+        <div style={{ marginTop: 16 }}>
+          <RoleInfo role={user.permissions} />
+        </div>
         <div style={{ marginTop: 16 }}>
           <SetGroup
             disabled={isDisable}

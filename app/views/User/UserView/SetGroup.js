@@ -19,7 +19,6 @@ class SetGroup extends React.Component {
         permission: option.permissions
       })
     )
-    console.log(optionSettings)
     return (
       <React.Fragment>
         <DualListBox

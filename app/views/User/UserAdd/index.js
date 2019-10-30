@@ -11,9 +11,10 @@ class UserAdd extends React.Component {
     this.state = {
       id: "",
       input: {
-        name: "",
+        fullname: "",
         email: "",
-        phone: "",
+        desc: "",
+        mobile: "",
         role: [],
         permission: []
       },
@@ -30,6 +31,8 @@ class UserAdd extends React.Component {
     this.setState({ input: { ...this.state.input, [type]: value } })
   }
   handleSave = this.props.loadingHelper(async () => {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    console.log(this.state.input)
     await this.props.dispatch(addUser(this.state.input))
   })
   componentDidMount = this.props.loadingHelper(async () => {

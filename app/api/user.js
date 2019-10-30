@@ -35,3 +35,11 @@ export function editUserRequest(id, input) {
     handleE(error, "Đã xảy ra lỗi khi sửa người dùng, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
   })
 }
+export function deleteUserRequest(id) {
+  return request({
+    url: "/api/1.0/users?user_id=" + id,
+    method: "delete"
+  }).catch(error => {
+    handleE(error, "Đã xảy ra lỗi khi xóa người dùng, nếu F5 lại không được anh/chị vui lòng liên hệ team code")
+  })
+}

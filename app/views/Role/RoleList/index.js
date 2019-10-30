@@ -20,6 +20,11 @@ class RoleList extends React.Component {
   getList = async () => {
     await this.props.dispatch(getAllRoleList())
   }
+  acceptDelete = this.props.loadingHelper(async () => {
+    this.handleClose()
+    await this.props.dispatch(deleteRole(this.state.id))
+    await this.getList()
+  })
   handleClose = () => {
     this.setState({
       confirmDialog: false
@@ -32,11 +37,6 @@ class RoleList extends React.Component {
     })
   }
   componentDidMount = this.props.loadingHelper(this.getList)()
-  acceptDelete = this.props.loadingHelper(async () => {
-    this.handleClose()
-    await this.props.dispatch(deleteRole(this.state.id))
-    await this.getList()
-  })
   render() {
     const { classes, role, user } = this.props
     const { confirmDialog } = this.state

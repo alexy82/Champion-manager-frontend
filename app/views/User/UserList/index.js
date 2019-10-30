@@ -3,8 +3,9 @@ import { connect } from "react-redux"
 import { Button, Icon } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
 import { withLoadingPage } from "./../../Utils/loadingPage"
-import { getAllUserList } from "./../../../stores/user/actions"
+import { getAllUserList, deleteUser } from "./../../../stores/user/actions"
 import { havePermission } from "./../../utilities/permission"
+import ConfirmDialog from "./../../../components/dialog/ConfirmDialog"
 import { Link } from "react-router-dom"
 import UserTable from "./UserTable"
 class UserList extends React.Component {
@@ -24,26 +25,46 @@ class UserList extends React.Component {
       id
     })
   }
+  acceptDelete = this.props.loadingHelper(async () => {
+    this.handleClose()
+    await this.props.dispatch(deleteUser(this.state.id))
+    await this.getList()
+  })
+  handleClose = () => {
+    this.setState({
+      confirmDialog: false
+    })
+  }
   componentDidMount = this.props.loadingHelper(this.getList)()
   render() {
     const { classes, user, userList } = this.props
+    const { confirmDialog } = this.state
     return (
-      <UserTable
-        users={userList}
-        isUpdate={havePermission(user, "update_role")}
-        isDelete={havePermission(user, "delete_role")}
-        confirmDialog={this.confirmDialog}
-        rightBtn={
-          havePermission(user, "create_user") ? (
-            <Link to="/user/add">
-              <Button variant="contained" style={{ backgroundColor: "#ffd014" }} className={classes.button}>
-                Thêm
-                <Icon className={classes.rightIcon}>add</Icon>
-              </Button>
-            </Link>
-          ) : null
-        }
-      />
+      <div>
+        <UserTable
+          users={userList}
+          isUpdate={havePermission(user, "update_role")}
+          isDelete={havePermission(user, "delete_role")}
+          confirmDialog={this.confirmDialog}
+          rightBtn={
+            havePermission(user, "create_user") ? (
+              <Link to="/user/add">
+                <Button variant="contained" style={{ backgroundColor: "#ffd014" }} className={classes.button}>
+                  Thêm
+                  <Icon className={classes.rightIcon}>add</Icon>
+                </Button>
+              </Link>
+            ) : null
+          }
+        />
+        <ConfirmDialog
+          visible={confirmDialog}
+          title="Xác nhận"
+          message="Bạn có chắc chắn muốn xóa ?"
+          onAccept={this.acceptDelete}
+          onClose={this.handleClose}
+        />
+      </div>
     )
   }
 }

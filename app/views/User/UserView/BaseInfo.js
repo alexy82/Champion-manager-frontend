@@ -3,14 +3,37 @@ import { Grid } from "@material-ui/core"
 import { LabelControlVertical } from "./../../Component/LabelControl"
 import { withPaper } from "./../../Utils/paper"
 import { withStyles } from "@material-ui/core/styles"
+import Chip from "@material-ui/core/Chip"
+import FaceIcon from "@material-ui/icons/Face"
 class RoleList extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
-    const { classes, isDisable, input, errors, handleChangeInput } = this.props
+    const { classes, isDisable, roles, input, errors, handleChangeInput } = this.props
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log(input)
     return (
       <React.Fragment>
+        <Grid container float flex>
+          {roles
+            ? roles.map((role, index) => {
+                return (
+                  <Chip
+                    xs={4}
+                    key={index}
+                    className={classes.relative}
+                    flex
+                    item
+                    icon={<FaceIcon />}
+                    label={role.name}
+                    onClick={handleClick}
+                    variant="outlined"
+                  />
+                )
+              })
+            : null}
+        </Grid>
         <Grid container spacing={8}>
           <Grid className={classes.relative} flex item container xs={6}>
             <LabelControlVertical
@@ -37,8 +60,8 @@ class RoleList extends React.Component {
                   <input
                     disabled={isDisable}
                     placeholder="Họ và Tên"
-                    className={`${classes.inputDefaut}`}
-                    onChange={e => handleChangeInput("desc", e.target.value)}
+                    className={`${classes.inputDefaut} ${errors.name && errors.name.msg && "errorSelectInput"}`}
+                    onChange={e => handleChangeInput("fullname", e.target.value)}
                     value={input.fullname ? input.fullname : ""}
                   />
                 </React.Fragment>
@@ -80,13 +103,18 @@ class RoleList extends React.Component {
             />
           </Grid>
           <Grid className={classes.relative} flex item container xs={12}>
-            <LabelControlVertical xs={12} label="Ngày tạo:  " control={input.created_at} />
-            <LabelControlVertical xs={12} label="Đăng nhập lần cuối:  " control={input.last_login} />
+            <LabelControlVertical label="Ngày tạo:" control={input.created_at} />
+          </Grid>
+          <Grid className={classes.relative} flex item container xs={6}>
+            <LabelControlVertical label="Đăng nhập lần cuối:" control={input.last_login} />
           </Grid>
         </Grid>
       </React.Fragment>
     )
   }
+}
+const handleClick = () => {
+  alert("You clicked the Chip.")
 }
 const style = () => ({
   spanError: {
