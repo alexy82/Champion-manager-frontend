@@ -12,12 +12,13 @@ class RoleList extends React.Component {
   render() {
     const { classes, isDisable, roles, input, errors, handleChangeInput } = this.props
     console.log("%%%%%%%%%%%%%%%%%%%%%%%")
-    console.log(input)
+    console.log(this.props)
     return (
       <React.Fragment>
         <Grid container float flex>
-          {roles
-            ? roles.map((role, index) => {
+          {input.isAddToBaseInfo
+            ? null
+            : roles.map((role, index) => {
                 return (
                   <Chip
                     xs={4}
@@ -31,8 +32,7 @@ class RoleList extends React.Component {
                     variant="outlined"
                   />
                 )
-              })
-            : null}
+              })}
         </Grid>
         <Grid container spacing={8}>
           <Grid className={classes.relative} flex item container xs={6}>

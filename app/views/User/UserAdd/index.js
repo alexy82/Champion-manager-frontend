@@ -15,8 +15,9 @@ class UserAdd extends React.Component {
         email: "",
         desc: "",
         mobile: "",
-        role: [],
-        permission: []
+        roles: [],
+        permissions: [],
+        isAddToBaseInfo: true
       },
       isEmptyInput: true
     }
@@ -27,12 +28,18 @@ class UserAdd extends React.Component {
   getRoles = async () => {
     this.props.dispatch(getAllRoleList())
   }
+  setStateAsync(state) {
+    return new Promise(resolve => {
+      this.setState(state, resolve)
+    })
+  }
   handleChangeInput = (type, value) => {
     this.setState({ input: { ...this.state.input, [type]: value } })
   }
+  handleChangeInputAsync = async (type, value) => {
+    await this.setStateAsync({ input: { ...this.state.input, [type]: value } })
+  }
   handleSave = this.props.loadingHelper(async () => {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-    console.log(this.state.input)
     await this.props.dispatch(addUser(this.state.input))
   })
   componentDidMount = this.props.loadingHelper(async () => {
@@ -40,12 +47,16 @@ class UserAdd extends React.Component {
     await this.getRoles()
   })
   render() {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    console.log(this.state)
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     return (
       <UserView
         input={this.state.input}
         loadingButton={this.state.loadingButton}
         handleSave={this.handleSave}
         handleChangeInput={this.handleChangeInput}
+        handleChangeInputAsync={this.handleChangeInputAsync}
         {...this.props}
       />
     )

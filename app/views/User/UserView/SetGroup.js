@@ -16,7 +16,7 @@ class SetGroup extends React.Component {
       optionSettings.push({
         value: option.id,
         label: option.name,
-        permission: option.permissions
+        permissions: option.permissions
       })
     )
     return (

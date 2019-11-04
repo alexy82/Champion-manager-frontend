@@ -6,7 +6,7 @@ import { Icon, CircularProgress } from "@material-ui/core"
 import SetGroup from "./SetGroup"
 import SetRole from "./SetRole"
 import RoleInfo from "./RoleInfo"
-function onlyUnique(value, index, self) {
+export function onlyUnique(value, index, self) {
   return self.indexOf(value) === index
 }
 class UserView extends React.Component {
@@ -42,41 +42,29 @@ class UserView extends React.Component {
       this.setState({ loadingButton: false })
     })
   }
-  handleChangeRole = selected => {
-    let isRemove = selected.length < this.props.input.role.length
-    let permission = this.props.input.permission
-    let roleMixin = selected.concat(this.props.input.role)
-    roleMixin = roleMixin.filter(onlyUnique)
+  handleChangeRole = async selected => {
+    let permission = []
+    let roleMixin = []
+    selected.forEach(element => {
+      roleMixin.push(this.props.roles.find(x => x.id == element))
+    })
     roleMixin.map(item => {
-      let role = this.props.roles.find(element => {
-        return element.id == item
-      })
-      console.log(role)
-      role.permissions.map(perm => {
-        if (isRemove) {
-          var index = permission.indexOf(perm)
-          permission.splice(index, 1)
-        } else {
-          permission.push("" + perm.id)
-        }
+      item.permissions.forEach(x => {
+        permission.push(x.id + "")
       })
     })
     permission = permission.filter(onlyUnique)
-    console.log(permission)
-    this.props.handleChangeInput("permission", permission)
+    await this.props.handleChangeInputAsync("permission", permission)
     this.props.handleChangeInput("role", selected)
   }
   render() {
     const { classes, permissions, user, roles, input, handleChangeInput, isDisable } = this.props
-    console.log(888888888888888888888888888)
-    console.log(user)
     const { loadingButton } = this.state
+    console.log(888888888888888888888888888, input, roles)
     return (
       <div>
         <BaseInfo roles={roles} isDisable={isDisable} input={input} errors={this.state.errors} handleChangeInput={handleChangeInput} />
-        <div style={{ marginTop: 16 }}>
-          <RoleInfo role={user.permissions} />
-        </div>
+        <div style={{ marginTop: 16 }}>{input.isAddToBaseInfo ? null : <RoleInfo role={user.permissions} />}</div>
         <div style={{ marginTop: 16 }}>
           <SetGroup
             disabled={isDisable}

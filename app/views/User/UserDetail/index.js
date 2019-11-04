@@ -15,8 +15,8 @@ class UserDetail extends React.Component {
         fullname: "",
         email: "",
         mobile: "",
-        role: [],
-        permission: []
+        roles: [],
+        permissions: []
       },
       isEmptyInput: true
     }

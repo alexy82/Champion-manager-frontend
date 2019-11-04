@@ -9,7 +9,7 @@ class RoleInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      permisstion: this.props.permisstions
+      permisstions: this.props.permisstions
     }
   }
   render() {
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 }))
 const mapStateToProps = state => {
   return {
-    permisstion: state.permisstion
+    permisstions: state.permisstion
   }
 }
 export default connect(mapStateToProps)(withPaper(RoleInfo, "group", "Quyền"))
