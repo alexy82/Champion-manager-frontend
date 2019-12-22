@@ -1,0 +1,2 @@
+export const SET_LIST_PLAYER = "SET_LIST_PLAYER"
+export const SET_DETAIL_PLAYER = "SET_DETAIL_PLAYER"

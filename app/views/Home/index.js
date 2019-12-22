@@ -51,6 +51,10 @@ class Home extends React.Component {
           <Grid container spacing={8} className={classes.containerBlock}>
             {this.renderFeatureCard("role", user && user.userDetail ? user.userDetail : null)}
             {this.renderFeatureCard("user", user && user.userDetail ? user.userDetail : null)}
+            {this.renderFeatureCard("team", user && user.userDetail ? user.userDetail : null)}
+            {this.renderFeatureCard("player", user && user.userDetail ? user.userDetail : null)}
+            {this.renderFeatureCard("rank", user && user.userDetail ? user.userDetail : null)}
+            {this.renderFeatureCard("match", user && user.userDetail ? user.userDetail : null)}
           </Grid>
         </Paper>
       </MuiThemeProvider>
@@ -134,6 +138,64 @@ const cardMaping = {
       ),
       svgSource: role,
       content: "Quản lý người dùng",
+      style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
+    }
+  },
+  team: {
+    perm: "view_team",
+    path: "/team",
+    props: {
+      title: (
+        <React.Fragment>
+          QUẢN LÝ
+          <br />
+          ĐỘI BÓNG
+        </React.Fragment>
+      ),
+      svgSource: role,
+      content: "Quản lý đội bóng",
+      style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
+    }
+  },
+  player: {
+    perm: "view_player",
+    path: "/player",
+    props: {
+      title: (
+        <React.Fragment>
+          QUẢN LÝ
+          <br />
+          CẦU THỦ
+        </React.Fragment>
+      ),
+      svgSource: role,
+      content: "Quản lý cầu thủ",
+      style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
+    }
+  },
+  rank: {
+    perm: "view_rank",
+    path: "/rank",
+    props: {
+      title: <React.Fragment>XẾP HẠNG</React.Fragment>,
+      svgSource: role,
+      content: "Xếp hạng",
+      style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
+    }
+  },
+  match: {
+    perm: "view_match",
+    path: "/match",
+    props: {
+      title: (
+        <React.Fragment>
+          QUẢN LÝ
+          <br />
+          TRẬN ĐẤU
+        </React.Fragment>
+      ),
+      svgSource: role,
+      content: "Trận đấu",
       style: { backgroundImage: "linear-gradient(to right, #bd0fe7, #8806ca)" }
     }
   }

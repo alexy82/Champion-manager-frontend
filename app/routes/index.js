@@ -73,6 +73,56 @@ const LoadableUserDetail = Loadable({
     )
   }
 })
+const LoadablePlayerList = Loadable({
+  loader: () => import("../views/Player/PlayerList"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadablePlayerDetail = Loadable({
+  loader: () => import("../views/Player/PlayerDetail"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadableRank = Loadable({
+  loader: () => import("../views/Rank"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadableTeamList = Loadable({
+  loader: () => import("../views/Team/TeamList"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
+const LoadableMatchList = Loadable({
+  loader: () => import("../views/Match/MatchList"),
+  loading() {
+    return (
+      <div>
+        <CircularProgress style={styleProgress} />
+      </div>
+    )
+  }
+})
 const AppRoutes = () => {
   return (
     <Switch>
@@ -153,6 +203,61 @@ const AppRoutes = () => {
         _key={"user"}
         permission={"view_user"}
         title={"Quản lý người dùng"}
+      />
+      <AppRoute
+        component={LoadablePlayerList}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/player"
+        _key={"player"}
+        permission={"view_player"}
+        title={"Quản lý cầu thủ"}
+      />
+      <AppRoute
+        component={LoadablePlayerDetail}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/player/:id"
+        _key={"player"}
+        permission={"view_player"}
+        title={"Quản lý cầu thủ"}
+      />
+      <AppRoute
+        component={LoadableRank}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/rank"
+        _key={"rank"}
+        permission={"view_rank"}
+        title={"Xếp hạng"}
+      />
+      <AppRoute
+        component={LoadableTeamList}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/team"
+        _key={"team"}
+        permission={"view_team"}
+        title={"Đội bóng"}
+      />
+      <AppRoute
+        component={LoadableMatchList}
+        exact
+        needAuthenticated
+        needStore
+        background
+        path="/match"
+        _key={"match"}
+        permission={"view_match"}
+        title={"Trận đấu"}
       />
     </Switch>
   )

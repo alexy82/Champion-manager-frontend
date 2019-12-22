@@ -83,6 +83,76 @@ export function verifySystemRequest() {
             key: "create_user",
             module: "user",
             name: "Quyền thêm người dùng"
+          },
+          {
+            desc: "",
+            id: 8,
+            key: "view_player",
+            module: "player",
+            name: "Quyền xem thông tin cầu thủ"
+          },
+          {
+            desc: "",
+            id: 15,
+            key: "update_player",
+            module: "player",
+            name: "Quyền xem thông tin cầu thủ"
+          },
+          {
+            desc: "",
+            id: 16,
+            key: "delete_player",
+            module: "player",
+            name: "Quyền xem thông tin cầu thủ"
+          },
+          {
+            desc: "",
+            id: 17,
+            key: "create_player",
+            module: "player",
+            name: "Quyền xem thông tin cầu thủ"
+          },
+          {
+            desc: "",
+            id: 9,
+            key: "view_rank",
+            module: "rank",
+            name: "Quyền xem xếp hạng"
+          },
+          {
+            desc: "",
+            id: 10,
+            key: "view_team",
+            module: "team",
+            name: "Quyền xem đội bóng"
+          },
+          {
+            desc: "",
+            id: 11,
+            key: "create_team",
+            module: "team",
+            name: "Quyền thêm đội bóng"
+          },
+          {
+            desc: "",
+            id: 12,
+            key: "update_team",
+            module: "team",
+            name: "Quyền sửa đội bóng"
+          },
+          {
+            desc: "",
+            id: 13,
+            key: "delete_team",
+            module: "team",
+            name: "Quyền xoá đội bóng"
+          },
+          {
+            desc: "",
+            id: 14,
+            key: "view_match",
+            module: "match",
+            name: "Quyền xem lịch thi đấu"
           }
         ],
         picture: "https://lh3.googleusercontent.com/a-/AAuE7mBu3MhBCe_c_kj2b_XevSl4vsUBPU6p5TiWzgG-"

@@ -1,0 +1,2 @@
+export const SET_LIST_TEAM = "SET_LIST_TEAM"
+export const SET_DETAIL_TEAM = "SET_DETAIL_TEAM"

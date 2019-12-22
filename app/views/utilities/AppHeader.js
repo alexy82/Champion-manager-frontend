@@ -15,6 +15,10 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
 import DashboardIcon from "@material-ui/icons/Dashboard"
 import role from "../../assets/img/man.svg"
 import user from "../../assets/img/man.svg"
+import player from "../../assets/img/man.svg"
+import rank from "../../assets/img/man.svg"
+import team from "../../assets/img/man.svg"
+import match from "../../assets/img/man.svg"
 import Svg from "react-inlinesvg"
 import cookie from "react-cookies"
 // other components
@@ -233,6 +237,10 @@ class AppHeader extends React.Component {
               </Link>
               {this.renderMenuElement("role", user && user.userDetail ? user.userDetail : null)}
               {this.renderMenuElement("user", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("team", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("player", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("rank", user && user.userDetail ? user.userDetail : null)}
+              {this.renderMenuElement("match", user && user.userDetail ? user.userDetail : null)}
             </List>
           </div>
         </SwipeableDrawer>
@@ -294,6 +302,30 @@ const menuMaping = {
     path: "/user",
     title: "Quản lý người dùng",
     svgSrc: user
+  },
+  player: {
+    perm: "view_player",
+    path: "/player",
+    title: "Quản lý cầu thủ",
+    svgSrc: player
+  },
+  rank: {
+    perm: "view_rank",
+    path: "/rank",
+    title: "Xếp hạng",
+    svgSrc: rank
+  },
+  team: {
+    perm: "view_team",
+    path: "/team",
+    title: "Đội bóng",
+    svgSrc: team
+  },
+  match: {
+    perm: "view_match",
+    path: "/match",
+    title: "Trận đấu",
+    svgSrc: match
   }
 }
 const mapingIcon = {
